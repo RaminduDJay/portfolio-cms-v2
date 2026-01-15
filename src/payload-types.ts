@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'blog-posts': BlogPost;
+    projects: Project;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +80,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -158,6 +162,239 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts".
+ */
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  img: string | Media;
+  category: string;
+  author: string;
+  date: string;
+  content: {
+    paragraph_1: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    paragraph_2: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    paragraph_3: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+  };
+  points?:
+    | {
+        point: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  images?: {
+    imgdt1?: (string | null) | Media;
+    imgdt2?: (string | null) | Media;
+    imgdt3?: (string | null) | Media;
+  };
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: string;
+  title: string;
+  slug: string;
+  img: string | Media;
+  category: string;
+  year: string;
+  client: string;
+  toolsandtechnologies: string;
+  link?: string | null;
+  content: {
+    paragraph1: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    paragraph2: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    paragraph3?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    paragraph4?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    paragraph5?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    paragraph6?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  images?: {
+    imgdt1?: (string | null) | Media;
+    imgdt2?: (string | null) | Media;
+    imgdt3?: (string | null) | Media;
+    imgdt4?: (string | null) | Media;
+    imgdt5?: (string | null) | Media;
+    imgdt6?: (string | null) | Media;
+    imgdt7?: (string | null) | Media;
+  };
+  popupImages?:
+    | {
+        image?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  popupVideos?:
+    | {
+        video?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -190,6 +427,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'blog-posts';
+        value: string | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: string | Project;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -272,6 +517,109 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts_select".
+ */
+export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  img?: T;
+  category?: T;
+  author?: T;
+  date?: T;
+  content?:
+    | T
+    | {
+        paragraph_1?: T;
+        paragraph_2?: T;
+        paragraph_3?: T;
+      };
+  points?:
+    | T
+    | {
+        point?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        imgdt1?: T;
+        imgdt2?: T;
+        imgdt3?: T;
+      };
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  img?: T;
+  category?: T;
+  year?: T;
+  client?: T;
+  toolsandtechnologies?: T;
+  link?: T;
+  content?:
+    | T
+    | {
+        paragraph1?: T;
+        paragraph2?: T;
+        paragraph3?: T;
+        paragraph4?: T;
+        paragraph5?: T;
+        paragraph6?: T;
+      };
+  images?:
+    | T
+    | {
+        imgdt1?: T;
+        imgdt2?: T;
+        imgdt3?: T;
+        imgdt4?: T;
+        imgdt5?: T;
+        imgdt6?: T;
+        imgdt7?: T;
+      };
+  popupImages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  popupVideos?:
+    | T
+    | {
+        video?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

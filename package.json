@@ -7,7 +7,7 @@
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rmdir /s /q .next 2>nul & cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
@@ -15,21 +15,27 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" pnpm exec playwright test",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "migrate:blog": "cross-env NODE_OPTIONS=--no-deprecation node src/scripts/migrate-blog-data.js",
+    "migrate:complete": "cross-env NODE_OPTIONS=--no-deprecation tsx src/scripts/migrate-complete.js",
+    "generate:seed": "cross-env NODE_OPTIONS=--no-deprecation node src/scripts/generate-seed.js"
   },
   "dependencies": {
+    "@payloadcms/db-mongodb": "3.69.0",
     "@payloadcms/next": "3.69.0",
+    "@payloadcms/plugin-cloud-storage": "^3.69.0",
     "@payloadcms/richtext-lexical": "3.69.0",
     "@payloadcms/ui": "3.69.0",
+    "cloudinary": "^2.8.0",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
+    "mongodb": "^7.0.0",
     "next": "15.4.10",
     "payload": "3.69.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
-    "sharp": "0.34.2",
-    "@payloadcms/db-mongodb": "3.69.0"
+    "sharp": "0.34.2"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",
@@ -44,6 +50,7 @@
     "playwright": "1.56.1",
     "playwright-core": "1.56.1",
     "prettier": "^3.4.2",
+    "tsx": "^4.21.0",
     "typescript": "5.7.3",
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.3"
